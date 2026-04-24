@@ -45,7 +45,6 @@ def solution1(cap, n, deliveries, pickups):
         d_far = max(visited[k]) if k < cnt and visited[k] else 0
         p_far = max(visited2[k]) if k < cnt2 and visited2[k] else 0
         answer += max(d_far, p_far)
-
         
     return 2*answer
 
