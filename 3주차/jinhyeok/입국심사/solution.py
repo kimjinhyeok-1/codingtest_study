@@ -1,12 +1,20 @@
-from collections import defaultdict
-
-def solution(clothes):
-    ans = 1
-    dic = defaultdict(int)
-    for name, kind in clothes:
-        dic[kind] += 1
+def solution(n, times):
+    answer = 0
+    left = 1
+    right = max(times) * n
     
-    for v in dic.values():
-        ans *= (v+1)
-    
-    return ans - 1
+    while left <= right:
+        mid = (left + right) // 2
+        
+        total = 0
+        
+        for t in times:
+            total += mid // t
+        
+        if total >= n:
+            answer = mid
+            right = mid - 1
+        else:
+            left = mid + 1
+        
+    return answer
